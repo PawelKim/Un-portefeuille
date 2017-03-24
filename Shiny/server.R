@@ -19,4 +19,5 @@ shinyServer(function(input, output) {
     firms <- data.frame("Date"=rownames(SBER), "SBER.Close"=SBER$SBER.Close, TATN[,4], ROSN[,4], FEES[,4], BANE[,4], AFLT[,4]) 
     head(firms)
   })
+
 })
