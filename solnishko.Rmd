@@ -1,0 +1,8 @@
+---
+title: "Darya"
+author: "dar"
+date: "24 марта 2017 г."
+output: html_document
+---
+
+Я сделала первый шаг - привязала свой R <3
