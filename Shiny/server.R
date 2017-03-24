@@ -7,8 +7,9 @@
 # http://www.rstudio.com/shiny/
 #
 
-<<<<<<< HEAD
 library(shiny) 
+
+
 
 shinyServer(function(input, output) { 
   
@@ -20,32 +21,6 @@ shinyServer(function(input, output) {
     d<-Sys.Date() 
     day(d)=day(d)-(interval*4) 
     getSymbols(Symbols="SBER", from=d, to = Sys.Date(), src = "Finam", period = "day", auto.assign = TRUE) 
-=======
-library(shiny)
-library(shiny) 
-
-
-
-shinyServer(function(input, output) {
-shinyServer(function(input, output) { 
-  
-  output$firms <- renderTable({
-    
-    # generate bins based on input$bins from ui.R
-  output$firms <- renderTable({ 
-    library(quantmod) 
-    library(rusquant) 
-    library(lubridate)
-    interval <- input$inteval
-    library(lubridate) 
-    interval <- as.numeric(input$interval) 
-    d<-Sys.Date()
-    day(d)=day(d)-(interval*4)
-    day(d)=day(d)-(interval*4) 
-    getSymbols(Symbols="SBER", from=d, to = Sys.Date(), src = "Finam", period = "day", auto.assign = TRUE) 
-    getSymbols(Symbols="TATN", from=d, to = Sys.Date(), src = "Finam", period = "day", auto.assign = TRUE)
-    getSymbols(Symbols="ROSN", from=d, to = Sys.Date(), src = "Finam", period = "day", auto.assign = TRUE)
->>>>>>> a235ebc07a2a72f84b1e72a9d82f254a132b7cf2
     getSymbols(Symbols="TATN", from=d, to = Sys.Date(), src = "Finam", period = "day", auto.assign = TRUE) 
     getSymbols(Symbols="ROSN", from=d, to = Sys.Date(), src = "Finam", period = "day", auto.assign = TRUE) 
     getSymbols(Symbols="FEES", from=d, to = Sys.Date(), src = "Finam", period = "day", auto.assign = TRUE) 
@@ -74,9 +49,4 @@ shinyServer(function(input, output) {
     plot(firmts, main="Companies")
     
   })
-})
-    SBER<-as.data.frame(SBER) 
-    firms <- data.frame("Date"=rownames(SBER), "SBER.Close"=SBER$SBER.Close, TATN[,4], ROSN[,4], FEES[,4], BANE[,4], AFLT[,4]) 
-    head(firms) 
-  }) 
 })
