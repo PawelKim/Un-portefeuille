@@ -5,27 +5,34 @@
 # http://www.rstudio.com/shiny/
 #
 
-library(shiny)
 
-shinyUI(pageWithSidebar(
+library(shiny) 
+
+shinyUI(pageWithSidebar( 
   
-  # Application title
-  headerPanel("Investment portfolio choice"),
+  # Application title 
+  headerPanel("Investment portfolio choice"), 
   
-  # Sidebar with a slider input for number of bins
-  sidebarPanel(
-    selectInput("interval",
-                "Investment interval:",
-                c(30,60,90,180))
-  ),
-  sliderInput("VaR",
-              "How much are you ready to lose?",
-              min=1,
-              max=20,
-              value=20)
-  # Show a plot of the generated distribution
-  mainPanel(
-    tableOutput('firms')
-  )
+  # Sidebar with a slider input for number of bins 
+  sidebarPanel( 
+    numericInput("interval", 
+                 "Investment interval:", 
+                value=30, 
+                min=30, 
+                max=180, 
+                step=30), 
+    sliderInput("VaR", 
+                "How much are you ready to lose?", 
+                min=1, 
+                max=20, 
+                value=20) 
+  ), 
+  
+  # Show a plot of the generated distribution 
+  mainPanel( 
+    tableOutput('firms') 
+  ) 
+  
+  
 ))
 
