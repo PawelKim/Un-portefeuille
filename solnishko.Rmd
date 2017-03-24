@@ -1,8 +1,47 @@
 ---
-title: "Darya"
-author: "dar"
+title: "Group 18"
+author: "top"
 date: "24 марта 2017 г."
 output: html_document
 ---
 
-Я сделала первый шаг - привязала свой R <3
+Я сделала первый шаг - привязала свой R <3##Загружаем данные
+```{r}
+library(quantmod) 
+library(rusquant) 
+getSymbols(Symbols="SBER", from='2017-01-01', to = Sys.Date(), src = "Finam", period = "day", auto.assign = TRUE) 
+#chartSeries(SBER, theme="white") 
+#addEMA(n=20, col="blue") 
+#plot(SBER$SBER.Close) 
+
+getSymbols(Symbols="TATN", from='2017-01-01', to = Sys.Date(), src = "Finam", period = "day", auto.assign = TRUE) 
+
+firms <- data.frame(SBER[,4], TATN[,4]) 
+#доходности
+sbrrho <- diff(log(firms$SBER.Close)) 
+firms$SberRho<-c(NA, sbrrho) 
+tatnrho <- diff(log(firms$TATN.Close)) 
+firms$TatnRho<-c(NA, tatnrho) 
+
+plot(firms$TatnRho[2:43], type="l") 
+#tseries::adf.test(firms$TatnRho[2:43]) 
+fff<-rollapplyr(firms[,3:4], 7, sd, fill=NA) 
+
+
+lag_apply <- function(x, n, callback){ 
+k = length(x); 
+result = rep(0, k); 
+for(i in 1 : (k - n + 1)){ 
+result[i] <- callback(x[i : (i + n -1)]); 
+} 
+return(result); 
+} 
+
+firms34<-firms[1:43,3] 
+
+asd<-lag_apply(firms34, 7, function(firms34){sd(firms34)}) 
+
+
+ffffff<-data.frame(fff[,1], asd)
+```
+
