@@ -9,8 +9,6 @@
 
 library(shiny) 
 
-
-
 shinyServer(function(input, output) { 
   
   output$firms <- renderTable({ 
