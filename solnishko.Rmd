@@ -23,6 +23,7 @@ getSymbols(Symbols="FEES", from=d, to = Sys.Date(), src = "Finam", period = "day
 getSymbols(Symbols="BANE", from=d, to = Sys.Date(), src = "Finam", period = "day", auto.assign = TRUE) 
 getSymbols(Symbols="AFLT", from=d, to = Sys.Date(), src = "Finam", period = "day", auto.assign = TRUE) 
 firms <- data.frame(SBER[,4], TATN[,4], ROSN[,4], FEES[,4], BANE[,4], AFLT[,4]) 
+head(firms)
 ```
 
 2 шаг. ѕодсчет доходностей дл€ каждой из фирм.
@@ -43,4 +44,5 @@ sd30 <- rollapplyr(firms[,7:12], 30, sd, fill=NA)
 ```
 
 4 шаг...
+
 
